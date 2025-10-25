@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_app/cubit/counter_cubit.dart';
+import 'package:flutter_counter_app/increment_decrement_page.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key, required this.title});
@@ -10,7 +11,8 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final counterCubit = BlocProvider.of<CounterCubit>(context);
-    final counterCubit = CounterCubit();
+    final counterCubit = BlocProvider.of<CounterCubit>(context);
+    // final counterCubit = CounterCubit();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -35,7 +37,11 @@ class MyHomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          counterCubit.increment();
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const IncrementDecrementPage(),
+            ),
+          );
         },
         child: const Icon(Icons.navigate_next),
       ),
