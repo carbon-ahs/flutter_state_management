@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_login_form_validation/bloc/auth_bloc.dart';
 
 import 'login_screen.dart';
 import 'palette.dart';
@@ -12,12 +14,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: Palette.backgroundColor,
+    return BlocProvider(
+      create: (context) => AuthBloc(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: Palette.backgroundColor,
+        ),
+        home: const LoginScreen(),
       ),
-      home: const LoginScreen(),
     );
   }
 }
