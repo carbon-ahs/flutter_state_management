@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_counter_app/bloc/counter_bloc.dart';
 import 'package:flutter_counter_app/cubit/counter_cubit.dart';
 import 'package:flutter_counter_app/increment_decrement_page.dart';
 
@@ -10,7 +11,7 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final counterCubit = BlocProvider.of<CounterCubit>(context);
+    final counterBloc = BlocProvider.of<CounterBloc>(context);
     final counterCubit = BlocProvider.of<CounterCubit>(context);
     // final counterCubit = CounterCubit();
     return Scaffold(
@@ -23,8 +24,7 @@ class MyHomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text('You have pushed the button this many times:'),
-            BlocBuilder<CounterCubit, int>(
-              bloc: counterCubit,
+            BlocBuilder<CounterBloc, int>(
               builder: (context, counter) {
                 return Text(
                   'yoo $counter',
