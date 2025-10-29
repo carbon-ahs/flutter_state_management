@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'weather_screen.dart';
+
 void main() {
   runApp(const MainApp());
 }
@@ -12,7 +14,8 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(useMaterial3: true),
-      home: const Scaffold(body: Center(child: Text('Hello World!'))),
+      // home: const Scaffold(body: Center(child: Text('Hello World!'))),
+      home: const WeatherScreen(),
     );
   }
 }
