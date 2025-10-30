@@ -4,18 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
-import 'additional_info_item.dart';
-import 'hourly_forecast_item.dart';
-import 'secrets.dart';
+import '../widgets/additional_info_item.dart';
+import '../widgets/hourly_forecast_item.dart';
+import '../../secrets.dart';
 
-class WeatherScreen extends StatefulWidget {
-  const WeatherScreen({super.key});
+class WeatherOldScreen extends StatefulWidget {
+  const WeatherOldScreen({super.key});
 
   @override
-  State<WeatherScreen> createState() => _WeatherScreenState();
+  State<WeatherOldScreen> createState() => _WeatherOldScreenState();
 }
 
-class _WeatherScreenState extends State<WeatherScreen> {
+class _WeatherOldScreenState extends State<WeatherOldScreen> {
   late Future<Map<String, dynamic>> weather;
 
   Future<Map<String, dynamic>> getCurrentWeather() async {
@@ -32,6 +32,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
       if (data['cod'] != '200') {
         throw 'An unexpected error occurred';
       }
+
+      print(data);
 
       return data;
     } catch (e) {
